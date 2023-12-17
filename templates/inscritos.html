@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block title %}Inscripción Gastronomía{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <h1 class="mb-4">Inscripción Gastronomía</h1>
+
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-primary">Inscribirse</button>
+    </form>
+
+    <h1 class="mb-4">Lista De Inscritos</h1>
+
+    {% for inscrito in inscritos %}
+        <div class="card mb-3 border-dark shadow">
+            <div class="card-body">
+                <h4 class="card-title mb-2 text-center">{{ inscrito.Nombre }}</h4>
+                <p class="card-text mb-2"><strong>Teléfono:</strong> {{ inscrito.Telefono }}</p>
+                <hr class="my-2"> 
+                <p class="card-text mb-2"><strong>Fecha y Hora de Inscripción:</strong> {{ inscrito.FechaDeInscripcionYHora }}</p>
+                <hr class="my-2"> 
+                <p class="card-text mb-2"><strong>Institución:</strong> {{ inscrito.Institucion.Nombre }}</p>
+                <hr class="my-2"> 
+                <p class="card-text mb-2"><strong>Estado:</strong> {{ inscrito.Estado }}</p>
+                {% if inscrito.Observaciones %}
+                    <hr class="my-2"> 
+                    <p class="card-text mb-2"><strong>Observaciones:</strong> {{ inscrito.Observaciones }}</p>
+                {% endif %}
+            </div>
+            <a href="{% url 'borrarInscrito' inscrito.id %}" class="btn btn-danger"><i class="bi bi-trash"></i> Borrar Inscripción</a>
+            <a href="/" class="btn btn-warning"><i class="bi bi-pen"></i> Editar Inscripción</a>
+        </div>
+    {% endfor %}
+</div>
+{% endblock %}

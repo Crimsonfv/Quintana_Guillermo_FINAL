@@ -5,6 +5,9 @@ from django.db import models
 class Instituciones(models.Model):
     Nombre = models.CharField(max_length=50)
 
+    def __str__(self):
+        return self.Nombre
+
 class Inscritos(models.Model):
     Nombre = models.CharField(max_length=50)
     Telefono = models.CharField(max_length=50)
