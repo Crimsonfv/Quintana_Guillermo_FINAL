@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'Inscritos.apps.InscritosConfig',
+    'rest_framework',
 ]
 
 MIDDLEWARE = [

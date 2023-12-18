@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block title %}Index{% endblock %}
+
+{% block content %}
+
+<h1 class="text-center">Datos para ver por API</h1>
+
+<div class="d-flex justify-content-center">
+    <a href="/api/instituciones/" class="btn btn-danger text-center m-2">instituciones</a>
+    <a href="/api/inscritos/" class="btn btn-warning text-center m-2">inscritos</a>
+    <a href="/datos/" class="btn btn-success text-center m-2">Mis Datos</a>
+</div>
+
+{% endblock %}
