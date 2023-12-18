@@ -11,7 +11,7 @@ class Instituciones(models.Model):
 class Inscritos(models.Model):
     Nombre = models.CharField(max_length=50)
     Telefono = models.CharField(max_length=50)
-    FechaDeInscripcionYHora = models.DateField()
+    FechaDeInscripcionYHora = models.DateTimeField()
     Estado = models.CharField(max_length=50)
     Institucion = models.ForeignKey('Instituciones', models.DO_NOTHING, db_column='Institucion')
     Observaciones = models.TextField(blank=True, null=True)

@@ -20,6 +20,22 @@ def inscritos(request):
     inscritos = Inscritos.objects.all()
     return render(request, 'inscritos.html', {'inscritos': inscritos, 'form': form})
 
+def borrarInscrito(request, inscrito_id):
+    inscrito = get_object_or_404(Inscritos, id=inscrito_id)
+    inscrito.delete()
+    return redirect('Inscritos')
+
+def editarInscrito(request, inscrito_id):
+    inscrito = get_object_or_404(Inscritos, id=inscrito_id)
+    if request.method == 'POST':
+        form = InscritosForm(request.POST, instance=inscrito)
+        if form.is_valid():
+            form.save()
+            return redirect('Inscritos')
+    else:
+        form = InscritosForm(instance=inscrito)
+    return render(request, 'editarInscrito.html', {'form': form})
+
 def instituciones(request):
     if request.method == 'POST':
         form = InstitucionesForm(request.POST)
@@ -32,9 +48,3 @@ def instituciones(request):
     instituciones = Instituciones.objects.all()
     return render(request, 'instituciones.html', {'instituciones': instituciones, 'form': form})
 
-
-
-def borrarInscrito(request, inscrito_id):
-    inscrito = get_object_or_404(Inscritos, id=inscrito_id)
-    inscrito.delete()
-    return redirect('Inscritos')

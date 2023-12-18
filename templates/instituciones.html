@@ -4,13 +4,21 @@
 
 {% block content %}
 
-    <h1>Hello instituciones</h1>
+    <div class="container">
+        <h1 class = text-center my-4 >instituciones</h1>
 
-    <form method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit" class="btn btn-primary">Enviar</button>
-    </form>
+        <form method="post" class="my-4">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="btn btn-primary">Enviar</button>
+        </form>
+
+        <h1 class = text-center my-4>Instituciones Inscritas</h1>
+        {% for institucion in instituciones %}
+            <h5 class = text-center my-4>{{ institucion.Nombre }}</h5>
+        {% endfor %}
+    </div>
 
 {% endblock %}
+
 
