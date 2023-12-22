@@ -13,4 +13,5 @@ urlpatterns = [
     path('api/instituciones/', views.institucionesList, name='institucionesList'),
     path('api/inscritos/', InscritosListView.as_view(), name='inscritosList'),
     path('api/inscritos/<int:id>/', InscritoDetailView.as_view(), name='inscritoDetail'),
+    path('api/instituciones/<int:idInstitucion>', views.InstitucionList),
 ]

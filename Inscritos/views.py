@@ -97,3 +97,15 @@ def institucionesList(request):
             serializer.save()
             return Response(serializer.data, status=201)
         return Response(serializer.errors, status=400)
+    
+@api_view(['GET'])
+def InstitucionList(request, idInstitucion):
+
+    try:
+        institucion = Instituciones.objects.get(id=idInstitucion)
+    except institucion.DoesNotExist:
+        return Response(status=status.HTTP_404_NOT_FOUND)
+
+    if request.method == 'GET':
+        serial = InstitucionesSerializer(institucion)
+        return Response(serial.data)
