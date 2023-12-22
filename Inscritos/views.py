@@ -66,6 +66,8 @@ def instituciones(request):
     instituciones = Instituciones.objects.all()
     return render(request, 'instituciones.html', {'instituciones': instituciones, 'form': form})
 
+#Inscritos usando una clase
+
 class InscritosListView(APIView):
     def get(self, request):
         inscritos = Inscritos.objects.all()
@@ -84,6 +86,8 @@ class InscritoDetailView(APIView):
         serializer = InscritosSerializer(inscrito)
         return Response(serializer.data)
 
+
+#institucion usando funcion
 @api_view(['GET', 'POST'])
 def institucionesList(request):
     if request.method == 'GET':
